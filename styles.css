@@ -1,0 +1,65 @@
+@keyframes boxes {
+  from {
+    transform: translateY(var(--start)) rotate(var(--rotate));
+  }
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+body {
+  height: 200vh;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 0;
+  position: sticky;
+  top: 0;
+}
+
+li {
+  position: sticky;
+  background-color: black;
+  width: 10em;
+  height: 80%;
+  animation: boxes 1s ease-out forwards;
+  opacity: 0;
+  animation-timeline: scroll();
+  animation-range: 0vh 90vh;
+}
+
+li:nth-of-type(1) {
+  --start: 10vh;
+  --rotate: 7deg;
+  animation-range: 0vh 90vh;
+}
+li:nth-of-type(2) {
+  --start: 5vh;
+  --rotate: -8deg;
+  animation-range: 10vh 90vh;
+}
+li:nth-of-type(3) {
+  --start: 15vh;
+  --rotate: 15deg;
+  animation-range: 20vh 90vh;
+}
+li:nth-of-type(4) {
+  --start: 25vh;
+  --rotate: 0deg;
+  animation-range: 30vh 90vh;
+}
+li:nth-of-type(5) {
+  --start: 20vh;
+  --rotate: 7deg;
+  animation-range: 40vh 90vh;
+}
+
+li {
+  transform: translateY(var(--start)) rotate(var(--rotate));
+  opacity: 1;
+}
