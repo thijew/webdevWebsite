@@ -42,13 +42,13 @@ li {
   position: sticky;
   background-color: black;
   width: 10em;
-  height: 80%;
+  height: 70%;
   animation: boxes 1s ease-out forwards, enable-hover linear forwards;
   animation-timeline: scroll();
-  animation-range: 0vh 90vh, 0vh 100vh;
   transform: translateY(var(--start)) rotate(var(--rotate));
   opacity: 1;
   pointer-events: none;
+  
 }
 
 li:nth-of-type(1) {
@@ -77,8 +77,16 @@ li:nth-of-type(5) {
   animation-range: 40vh 90vh, 100vh;
 }
 
+li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 
 li:hover {
     background-color: red;
+    top: 20vh;
+    transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
