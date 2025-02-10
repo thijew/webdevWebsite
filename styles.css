@@ -2,7 +2,7 @@
 :root {
   --main-color: #000000;
   --secondary-color: rgba(170, 20, 12, 1);
-  --light-color: #ffffff;
+  --white:#ffffff;
   --li-width: 10em;
   --li-height: 80%;
 }
@@ -28,16 +28,26 @@
   }
 }
 
-/* 
+
 @keyframes h1Animation {
   from {
-    transform: translateY(85vh);
+    position: relative;
+    top: 78%;
+    left: 30em;
+    color: var(--secondary-color);
+    font-size: 5em;
+    z-index: 3;
   }
 
   to {
-    transform: translateY(0);
+    position: relative;
+    width: var(--li-width);
+    height: var(--li-height);
+    font-size: 2em;
+    top: 50%;
+    left: 30em;
   }
-} */
+}
 
 * {
   margin: 0;
@@ -45,19 +55,21 @@
 }
 
 body {
+  position: relative;
   height: 200vh;
+  width: 100vw;
+
 }
 
-
-/*REMOVE SCROLL TO RGHT */
-
-h1 {
-  position: absolute;
-  left: 74vh;
-  transform: translateY(85vh);
-  z-index: 2;
-  font-family: Arial, Helvetica, sans-serif;
+section {
+  position: relative;
+  /* animation: h1Animation 1s  ease-in-out forwards; */
   color: var(--secondary-color);
+  font-size: 2em;
+  z-index: 3;
+  top: -16vh;
+  left: 42vw;
+
 }
 
 ul {
@@ -97,10 +109,22 @@ li:nth-of-type(2) {
 }
 
 li:nth-of-type(3) {
+  position: relative;
   --start: 3vh;
   --rotate: 6deg;
   animation-range: 20vh 90vh, 100vh;
+
 }
+
+ /* h1, p {
+  position: absolute;
+  top: 78%;
+  left: 32%;
+  color: var(--secondary-color);
+  font-size: 2em;
+  z-index: 3;
+
+} */
 
 li:nth-of-type(4) {
   --start: 25vh;
@@ -123,14 +147,12 @@ li::before {
   height: 100%;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  pointer-events: none;
 }
 
 /* https://cssgradient.io/ */
 li:hover::before {
-  opacity: .3;
-  background: var(--secondary-color);
-  background: linear-gradient(328deg, var(--li-height) 0%, rgba(255, 255, 255, 1) 100%);
+  opacity: .4;
+  background: linear-gradient(328deg, var(--secondary-color) 0%, var(--white) 100%);
 }
 
 li img {
@@ -150,6 +172,5 @@ li:hover {
   top: 20vh;
   margin: 1;
   padding: 1;
-  transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out;
-
+  transition: top 0.3s ease-in-out, background 0.3s ease-in-out;
 }
