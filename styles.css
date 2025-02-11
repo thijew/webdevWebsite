@@ -22,21 +22,34 @@
   from {
     pointer-events: none;
   }
-
   to {
     pointer-events: auto;
   }
 }
 
+/* text animation */
+/* https://codepen.io/thijew/pen/yyLBZBq */
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: var(--li-width);}
+}
 
-@keyframes h1Animation {
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color: rgba(0,255,0,.75);}
+  to{border-right-color: transparent;}
+}
+
+/* @keyframes h1Animation {
   from {
     position: relative;
-    top: 78%;
-    left: 30em;
+    animation: h1Animation 1s  ease-in-out forwards;
     color: var(--secondary-color);
-    font-size: 5em;
+    font-size: 2em;
     z-index: 3;
+    top: -16vh;
+    left: 42vw;
   }
 
   to {
@@ -47,7 +60,7 @@
     top: 50%;
     left: 30em;
   }
-}
+} */
 
 * {
   margin: 0;
@@ -58,6 +71,7 @@ body {
   position: relative;
   height: 200vh;
   width: 100vw;
+  overflow-x: hidden;
 
 }
 
@@ -69,7 +83,6 @@ section {
   z-index: 3;
   top: -16vh;
   left: 42vw;
-
 }
 
 ul {
@@ -96,6 +109,26 @@ li {
   will-change: transform, top, background-color;
 }
 
+li:nth-of-type(3) {
+  --start: 3vh;
+  --rotate: 6deg;
+    white-space: nowrap;
+    overflow: hidden;     
+  
+}
+
+li p {
+    width: auto;
+    border-right: solid 3px rgba(0,255,0,.75);
+    white-space: nowrap;
+    overflow: hidden;     
+    font-size: 2em;
+    color: rgba(255,255,255,.70);
+  animation: animated-text 4s steps(29,end) 1s 1 normal both,
+  animated-cursor 600ms steps(29,end) infinite;
+}
+
+
 li:nth-of-type(1) {
   --start: 10vh;
   --rotate: 7deg;
@@ -115,16 +148,6 @@ li:nth-of-type(3) {
   animation-range: 20vh 90vh, 100vh;
 
 }
-
- /* h1, p {
-  position: absolute;
-  top: 78%;
-  left: 32%;
-  color: var(--secondary-color);
-  font-size: 2em;
-  z-index: 3;
-
-} */
 
 li:nth-of-type(4) {
   --start: 25vh;
