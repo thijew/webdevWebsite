@@ -10,29 +10,47 @@ const urlSquad = baseURL + endpointSquad;
 // List item where data is shown
 const secondList = document.querySelector('li:nth-of-type(2)');
 
+// list item with img
+let userImg = document.querySelector('li:nth-of-type(4) img');
+
 const fallbackWebsite = "https://youtu.be/dQw4w9WgXcQ";
 
 
 
-getMyName();
+// getMyName();
 getMyImage();
-getEverybody();
 getMyBirthday();
 
+getData(urlMe).then(data222 => {
 
 
-function getMyName() {
-    getData(urlMe).then(data => {
-        console.log(data.data);
+    let avatar = data222.data.avatar;
+    console.log(avatar);
 
-        const myData = data.data;
-        let myName = myData.name;
+    let myName = data222.data.name;
+    let img = document.createElement('img');
 
-        console.log(myName);
+    img.src = avatar;
+    img.alt = myName;
+
+    console.log(img);
 
 
-    });
-}
+
+});
+
+// function getMyName() {
+//     getData(urlMe).then(data => {
+//         console.log(data.data);
+
+//         const myData = data.data;
+//         let myName = myData.name;
+
+//         console.log(myName);
+
+
+//     });
+// }
 
 
 
@@ -43,100 +61,30 @@ function getMyImage() {
         let myImgSrc = myData.avatar;
 
         if (!myImgSrc) {
-            myImgSrc = "images/placeholder1.svg";
+            myImgSrc = "imgs/placeholder.png";
         }
-
-        const myImg = document.createElement("img");
+        const myImg = userImg;
 
         myImg.src = myImgSrc;
         myImg.alt = myName;
 
-        mySection.append(myImg);
     });
 }
-
-
-
-// reserve webiste: https://youtu.be/dQw4w9WgXcQ?si=WHPj7XWqw3d-GXe7
-
-function getEverybody() {
-    getData(urlSquad).then(data => {
-        // console.log(data.data);
-
-        const persons = data.data;
-
-        persons.forEach(person => {
-            // console.log(person);
-
-            let personName = person.name;
-            let personImgSrc = person.avatar;
-            let personWebsite = person.website;
-
-            if (!personImgSrc) {
-                let randomNr = Math.floor(Math.random() * 5) + 1;
-                // console.log(randomNr);
-                personImgSrc = `images/placeholder${randomNr}.svg`;
-            }
-
-            if (!personWebsite) {
-                personWebsite = fallbackWebsite;
-            }
-
-            personHTML =
-                `<article>
-					<h3>${personName}</h3>
-					<img src="${personImgSrc}" alt="${personName}">
-					<a href="${personWebsite}" aria-label="de website van ${personName}">website</a>
-				</article>`;
-
-            list.insertAdjacentHTML('beforeend', personHTML);
-        });
-    });
-}
-
-
-
-// normal
-
-// function getMyBirthday() {
-// 	getData(urlMe).then( data => {  
-//     // console.log(data.data);
-
-// 		const myData = data.data;
-// 		let myBirthdate = myData.birthdate;
-
-// 		// console.log(myBirdthdate);
-
-// 		// birthdate is not present
-// 		if (!myBirthdate) {
-// 			// do nothing
-// 		}
-// 		// add birthday
-// 		else {
-// 			const myBirthday = document.createElement("time");
-// 			myBirthday.textContent = myBirthdate;
-// 			myBirthday.dateTime = myBirthdate;
-// 			mySection.append(myBirthday);
-// 		}
-// 	});	
-// }
-
-
 
 // fancy
 
 function getMyBirthday() {
     getData(urlMe).then(data => {
-        // console.log(data.data);
+        console.log(data.data);
 
         const myData = data.data;
         let myBirthdate = myData.birthdate;
 
-        // console.log(myBirdthdate);
+        console.log(myBirthdate);
 
         // birthdate is not present
         if (!myBirthdate) {
-            // do nothing
+            console.log("No birthdate found");
         }
         // convert birthdate to readable date
         else {
@@ -148,7 +96,21 @@ function getMyBirthday() {
             myBirthday.textContent = `🎉 ${myBirthdateDDMMMMYY}`;
             myBirthday.dateTime = myBirthdate;
 
-            mySection.append(myBirthday);
+            // mySection.append(myBirthday);
+
+            console.log(myBirthday);
         }
     });
+}
+
+async /*9*/ function getData(URL) {
+    return ( //8
+        fetch(URL) //1
+            .then( //2
+                response /*3*/ => response.json() //4
+            )
+            .then( //5
+                jsonData /*6*/ => { return jsonData } //7
+            )
+    );
 }

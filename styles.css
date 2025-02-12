@@ -34,79 +34,16 @@
   }
 }
 
-@keyframes h1Animation {
-  to {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 @keyframes letterAnimation {
   to {
     transform: translateX(var(--tX)) translateY(var(--tY)) rotate(var(--r));
   }
 }
 
-@keyframes hAnimation {
-  /* from {
-    transform: rotate(-6deg);
-  } */
+@keyframes pAnimation {
   to {
-    transform: translateX(3vw) rotate(-4deg);
-  }
-}
-
-@keyframes iAnimation {
-  /* from {
-    transform: rotate(-6deg);
-  } */
-  to {
-    transform: translateX(6vw) rotate(7deg);
-  }
-}
-
-@keyframes jAnimation {
-  /* from {
-    transform: rotate(-6deg);
-  } */
-  to {
-    transform: translateX(2vw) rotate(-3deg);
-  }
-}
-
-@keyframes eAnimation {
-  /* from {
-    transform:rotate(-6deg);
-  } */
-  to {
-    transform: translateX(8vw) rotate(12deg);
-  }
-}
-
-@keyframes wAnimation {
-  /* from {
-    transform: rotate(-6deg);
-  } */
-  to {
-    transform: translateX(1vw) rotate(12deg);
-  }
-}
-
-@keyframes nAnimation {
-  /* from {
-    transform: rotate(-6deg);
-  } */
-  to {
-    transform: translateX(8vw) rotate(12deg);
-  }
-}
-
-@keyframes dAnimation {
-  /* from {
-    transform: rotate(-6deg);
-  } */
-  to {
-    transform: translateX(5vw) rotate(12deg);
+    transform: translateY(19em);
+    font-size: .9em;
   }
 }
 
@@ -132,95 +69,111 @@ section {
   color: var(--secondary-color);
   font-size: 2em;
   z-index: 3;
-  width: fit-content;
   pointer-events: none;
-  
-  position: relative;
   font-size: 2em;
-  left: -5vw;
   width: 100vw;
   animation: sectionAnimation 1s ease-in-out forwards;
   animation-timeline: view();
-  animation-range: entry 100lvh entry 110lvh;
-
-  transform: translateY(75vh) rotate(-6deg);
+  animation-range: entry 100lvh entry 190lvh;
+  transform: translateY(75vh) translateX(-5vw) rotate(-6deg);
 }
 
-h1{
-  color: var(--secondary-color);
-  /* animation: h1Animation 1s  ease-in-out forwards;
-  animation-timeline: scroll(); */
-  span {
-    display: inline-block;
-  }
-}
 
 h1 span {
-  animation: letterAnimation 1s ease-in-out forwards;
+  display: inline-block;
+  animation-name: letterAnimation;
   animation-timeline: --text-scramble;
   animation-range: entry var(--start-range) entry var(--end-range);
+}
 
+section p {
+  animation: pAnimation 1s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range: entry 100lvh entry 190lvh;
 }
 
 h1 span:nth-of-type(1) {
-  --tX: 1em;
-  --tY: 10vh;
-  --r: 7deg;
+  --tX: .5em;
+  --tY: 0em;
+  --r: 2deg;
   --start-range: 100lvh;
-  --end-range: 110lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(2) {
-  animation: hAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: 10vh 90vh;
-  animation-range: entry 100lvh entry 110lvh;
-
+  --tX: 1em;
+  --tY: 1.2em;
+  --r: -3deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(3) {
-  animation: iAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: entry 105lvh entry 110lvh;
-
+  --tX: 1em;
+  --tY: 2.4em;
+  --r: 1deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(4) {
-  animation: jAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: entry 115lvh entry 120lvh;
-
+  --tX: .7em;
+  --tY: 3.6em;
+  --r: -2deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(5) {
-  animation: eAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: entry 115lvh entry 120lvh;
+  --tX: -1em;
+  --tY: 4.8em;
+  --r: 2deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(6) {
+  --tX: -1em;
+  --tY: 6em;
+  --r: -1deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(7) {
-  animation: wAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: entry 115lvh entry 120lvh;
+  --tX: -3.5em;
+  --tY: 7.2em;
+  --r: 3deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(8) {
-  animation: iAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: entry 115lvh entry 120lvh;
+  --tX: -3em;
+  --tY: 8.4em;
+  --r: -2deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(9) {
-  animation: nAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: entry 115lvh entry 120lvh;
+  --tX: -4em;
+  --tY: 9.6em;
+  --r: 1deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
 
 h1 span:nth-of-type(10) {
-  animation: dAnimation 1s  ease-in-out forwards;
-  animation-timeline: --text-scramble;
-  animation-range: entry 115lvh entry 120lvh;
+  --tX: -4em;
+  --tY: 10.8em;
+  --r: -3deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
 }
+
+
+
 
 ul {
   list-style-type: none;
