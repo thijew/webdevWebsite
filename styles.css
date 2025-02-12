@@ -28,100 +28,85 @@
 }
 
 @keyframes sectionAnimation {
-  from {
-    position: relative;
-    font-size: 2em;
-    left: -5vw;
-    width: 100vw;
-    transform: translateY(75vh) rotate(-6deg);
-
-  }
   to {
-    display: flex;
-    flex-direction: column;
     font-size: 1.8em;
     transform: translateY(0);
   }
 }
 
 @keyframes h1Animation {
-  from {
-  }
   to {
     display: flex;
     flex-direction: column;
   }
 }
 
-@keyframes tAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+@keyframes letterAnimation {
   to {
-    transform: translateY(1vh) translateX(9vw) rotate(10deg);
+    transform: translateX(var(--tX)) translateY(var(--tY)) rotate(var(--r));
   }
 }
 
 @keyframes hAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+  /* from {
+    transform: rotate(-6deg);
+  } */
   to {
-    transform: translateY(0) translateX(3vw) rotate(-4deg);
+    transform: translateX(3vw) rotate(-4deg);
   }
 }
 
 @keyframes iAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+  /* from {
+    transform: rotate(-6deg);
+  } */
   to {
-    transform: translateY(0) translateX(6vw) rotate(7deg);
+    transform: translateX(6vw) rotate(7deg);
   }
 }
 
 @keyframes jAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+  /* from {
+    transform: rotate(-6deg);
+  } */
   to {
-    transform: translateY(0) translateX(2vw) rotate(-3deg);
+    transform: translateX(2vw) rotate(-3deg);
   }
 }
 
 @keyframes eAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+  /* from {
+    transform:rotate(-6deg);
+  } */
   to {
-    transform: translateY(0) translateX(8vw) rotate(12deg);
+    transform: translateX(8vw) rotate(12deg);
   }
 }
 
 @keyframes wAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+  /* from {
+    transform: rotate(-6deg);
+  } */
   to {
-    transform: translateY(0) translateX(1vw) rotate(12deg);
+    transform: translateX(1vw) rotate(12deg);
   }
 }
 
 @keyframes nAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+  /* from {
+    transform: rotate(-6deg);
+  } */
   to {
-    transform: translateY(0) translateX(8vw) rotate(12deg);
+    transform: translateX(8vw) rotate(12deg);
   }
 }
 
 @keyframes dAnimation {
-  from {
-    transform: translateY(75vh) rotate(-6deg);
-  }
+  /* from {
+    transform: rotate(-6deg);
+  } */
   to {
-    transform: translateY(0) translateX(5vw) rotate(12deg);
+    transform: translateX(5vw) rotate(12deg);
   }
 }
 
@@ -138,6 +123,10 @@ body {
 
 }
 
+li:nth-of-type(3) {
+  view-timeline-name: --text-scramble;
+}
+
 section {
   position: relative;
   color: var(--secondary-color);
@@ -145,70 +134,92 @@ section {
   z-index: 3;
   width: fit-content;
   pointer-events: none;
-  animation: sectionAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 0vh 100vh;
+  
+  position: relative;
+  font-size: 2em;
+  left: -5vw;
+  width: 100vw;
+  animation: sectionAnimation 1s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range: entry 100lvh entry 110lvh;
+
+  transform: translateY(75vh) rotate(-6deg);
 }
 
 h1{
   color: var(--secondary-color);
-  animation: h1Animation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
+  /* animation: h1Animation 1s  ease-in-out forwards;
+  animation-timeline: scroll(); */
+  span {
+    display: inline-block;
+  }
+}
+
+h1 span {
+  animation: letterAnimation 1s ease-in-out forwards;
+  animation-timeline: --text-scramble;
+  animation-range: entry var(--start-range) entry var(--end-range);
 
 }
 
 h1 span:nth-of-type(1) {
-  animation: tAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 0vh 90vh;
+  --tX: 1em;
+  --tY: 10vh;
+  --r: 7deg;
+  --start-range: 100lvh;
+  --end-range: 110lvh;
 }
 
 h1 span:nth-of-type(2) {
   animation: hAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
+  animation-timeline: --text-scramble;
   animation-range: 10vh 90vh;
+  animation-range: entry 100lvh entry 110lvh;
+
 }
 
 h1 span:nth-of-type(3) {
   animation: iAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 20vh 90vh;
+  animation-timeline: --text-scramble;
+  animation-range: entry 105lvh entry 110lvh;
+
 }
 
 h1 span:nth-of-type(4) {
   animation: jAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 30vh 90vh;
+  animation-timeline: --text-scramble;
+  animation-range: entry 115lvh entry 120lvh;
+
 }
 
 h1 span:nth-of-type(5) {
   animation: eAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 40vh 90vh;
+  animation-timeline: --text-scramble;
+  animation-range: entry 115lvh entry 120lvh;
 }
 
 h1 span:nth-of-type(7) {
   animation: wAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 50vh 90vh;
+  animation-timeline: --text-scramble;
+  animation-range: entry 115lvh entry 120lvh;
 }
 
 h1 span:nth-of-type(8) {
   animation: iAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 60vh 90vh;
+  animation-timeline: --text-scramble;
+  animation-range: entry 115lvh entry 120lvh;
 }
 
 h1 span:nth-of-type(9) {
   animation: nAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 70vh 90vh;
+  animation-timeline: --text-scramble;
+  animation-range: entry 115lvh entry 120lvh;
 }
 
 h1 span:nth-of-type(10) {
   animation: dAnimation 1s  ease-in-out forwards;
-  animation-timeline: scroll();
-  animation-range: 80vh 90vh;
+  animation-timeline: --text-scramble;
+  animation-range: entry 115lvh entry 120lvh;
 }
 
 ul {
