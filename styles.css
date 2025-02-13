@@ -220,7 +220,7 @@ li {
 
 li:nth-of-type(1) *,
 li:nth-of-type(2) *,
-li:nth-of-type(5) * {
+li:nth-of-type(5) img {
   animation: showContent 1s linear forwards;
   animation-timeline: view();
   animation-range: entry 100lvh entry 200lvh;
@@ -287,8 +287,9 @@ li img {
 
 }
 
-li:nth-of-type(5) {
-  color: var(--white);
+li:nth-of-type(5) article {
+  opacity: 0;
+
 }
 
 
@@ -298,11 +299,7 @@ li:nth-of-type(5) {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (orientation:landscape),
-(min-width:1200px) and (max-width: 1600px) {
-  body {
-    background-color: red;
-  }
-}
+(min-width:1200px) and (max-width: 1600px) {}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 1200px) {
@@ -330,13 +327,41 @@ li:nth-of-type(5) {
     transform: rotateX(0);
   }
 
+  li img {
+    max-width: 100;
+    max-height: 100%;
+    object-fit: cover;
+    position: inline-block;
+  }
+
   section {
     position: relative;
     color: var(--secondary-color);
     font-size: 2em;
     pointer-events: none;
+    transform: rotateX(0) translateY(0);
   }
 }
+
+li:nth-of-type(2) {
+  overflow: hidden;
+  list-style: none;
+  transform: translateY(0);
+  transform: translateX(0);
+  rotate(0);
+  color: var(--white);
+}
+
+li:nth-of-type(2) ol {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+li:nth-of-type(2):hover {
+  width: max-content;
+}
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {

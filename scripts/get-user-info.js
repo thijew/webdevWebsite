@@ -17,7 +17,7 @@ const fallbackWebsite = "https://youtu.be/dQw4w9WgXcQ";
 
 
 
-// getMyName();
+getMyName();
 getMyImage();
 getMyBirthday();
 
@@ -39,22 +39,26 @@ getData(urlMe).then(data222 => {
 
 });
 
-// function getMyName() {
-//     getData(urlMe).then(data => {
-//         console.log(data.data);
+function getMyName() {
+    getData(urlMe).then(data => {
+        console.log(data.data);
 
-//         const myData = data.data;
-//         let myName = myData.name;
+        const myData = data.data;
+        let myName = myData.name;
 
-//         console.log(myName);
+        if (!myName) {
+            showName = "Name not found";
+        }
+        const showName = document.querySelector('li:nth-of-type(4) h1');
 
-
-//     });
-// }
+        console.log(myName);
+    });
+}
 
 
 
 function getMyImage() {
+
     getData(urlMe).then(data => {
         const myData = data.data;
         let myName = myData.name;

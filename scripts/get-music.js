@@ -1,8 +1,8 @@
 // API https://www.theaudiodb.com/free_music_api?ref=freepublicapis.com
 
-const musicURL = 'https://www.theaudiodb.com/api/v1/json/2/artist.php?i='
+const musicURL = 'https://www.theaudiodb.com/api/v1/json/2/artist.php?i=';
 
-const nirvanaID = '111319'
+const nirvanaID = '111319';
 
 const urlNirvana = musicURL + nirvanaID;
 
@@ -18,6 +18,7 @@ getMusicData(urlNirvana).then(data => {
     const musicCountry = musicData.strCountry;
     const musicWebsite = musicData.strWebsite;
     const musicLogo = musicData.strArtistThumb;
+    const musicLogoWide = musicData.strArtistWideThumb;
 
 
     fifthList.innerHTML = `
@@ -32,6 +33,17 @@ getMusicData(urlNirvana).then(data => {
     </article>
     `;
 });
+
+//     const imageElement = document.querySelector('li:nth-of-type(5) img');
+//     if (window.matchMedia("(orientation: landscape)").matches) {
+//         imageElement.src = "${musicLogoWide}" // Image for horizontal layout
+//     } else {
+//         imageElement.src = "${musicLogo}"; // Image for vertical layout
+//     }
+// });
+
+
+
 
 
 
