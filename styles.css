@@ -67,6 +67,7 @@
 
   to {
     opacity: 1;
+    transform: rotateX(-6deg);
   }
 }
 
@@ -98,7 +99,7 @@ section {
   animation: sectionAnimation 1s ease-in-out forwards;
   animation-timeline: view();
   animation-range: entry 100lvh entry 190lvh;
-  transform: translateY(80vh) translateX(-8vw) rotate(-6deg);
+  transform: translateY(80vh) translateX(-3vw) rotate(-6deg);
 }
 
 h1 span {
@@ -220,7 +221,7 @@ li {
 
 li:nth-of-type(1) *,
 li:nth-of-type(2) *,
-li:nth-of-type(5) img {
+li:nth-of-type(5) * {
   animation: showContent 1s linear forwards;
   animation-timeline: view();
   animation-range: entry 100lvh entry 200lvh;
@@ -234,8 +235,8 @@ li:nth-of-type(1) {
 
 li:nth-of-type(2) {
   --start: 5vh;
-  --rotate: -8deg;
-  animation-range: 10vh 90vh, 100vh;
+  --rotate: -5deg;
+  animation-range: 0vh 90vh
 }
 
 li:nth-of-type(3) {
@@ -265,7 +266,7 @@ li:hover {
 
 li::before {
   content: "";
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -288,8 +289,7 @@ li img {
 }
 
 li:nth-of-type(5) article {
-  opacity: 0;
-
+  display: hidden;
 }
 
 
@@ -344,11 +344,8 @@ li:nth-of-type(5) article {
 }
 
 li:nth-of-type(2) {
-  overflow: hidden;
+  max-width: fit-content;
   list-style: none;
-  transform: translateY(0);
-  transform: translateX(0);
-  rotate(0);
   color: var(--white);
 }
 
@@ -357,11 +354,6 @@ li:nth-of-type(2) ol {
   flex-direction: column;
   gap: 2em;
 }
-
-li:nth-of-type(2):hover {
-  width: max-content;
-}
-
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {
