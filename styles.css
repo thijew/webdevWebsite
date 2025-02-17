@@ -97,7 +97,7 @@ section {
   z-index: 3;
   pointer-events: none;
   font-size: 2em;
-  width: 100vw;
+  width: max-content;
   animation: sectionAnimation 1s ease-in-out forwards;
   animation-timeline: view();
   animation-range: entry 100lvh entry 190lvh;
@@ -219,7 +219,25 @@ li {
   opacity: 1;
   pointer-events: none;
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
+
+
+/* https://www.w3schools.com/cssref/css3_pr_flex-grow.php */
+ul li.clicked {
+    background-color: lightgreen;
+    width: 40vw;
+    bottom: 0;
+    animation-timeline: view();
+    animation-range: entry 0lvh entry 190lvh;
+}
+
+/* ul:has(li.clicked) li {
+
+} */
+
+
+
 
 li:nth-of-type(1) *,
 li:nth-of-type(2) *,
@@ -300,9 +318,7 @@ li:nth-of-type(2) ol {
   display: flex;
   flex-direction: column;
   gap: 2em;
-
 }
-
 
 /* https://www.w3schools.com/cSS/css_rwd_mediaqueries.asp */
 /* https://testsigma.com/blog/common-screen-resolutions/ */
@@ -337,6 +353,7 @@ li:nth-of-type(2) ol {
     animation: none;
     transform: rotateX(0);
   }
+
 
   li img {
     max-width: 100;
