@@ -1,5 +1,6 @@
 // Select all <li> elements inside the <ul>
 const listItems = document.querySelectorAll("ul li");
+const OllistItems = document.querySelectorAll("ol li");
 
 listItems.forEach((li) => {
     li.addEventListener("click", function () {
@@ -21,7 +22,6 @@ listItems.forEach((li) => {
         }
     });
 });
-
 // Remove the "clicked" class when the scroll position is below 100vh
 window.addEventListener("scroll", function () {
     const scrollY = window.scrollY;

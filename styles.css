@@ -224,12 +224,15 @@ li {
 
 
 /* https://www.w3schools.com/cssref/css3_pr_flex-grow.php */
-ul li.clicked {
-    background-color: lightgreen;
+ li.clicked {
+    background-color: var(--main-color);
     width: 40vw;
-    bottom: 0;
-    animation-timeline: view();
-    animation-range: entry 0lvh entry 190lvh;
+    top: 20lvh;
+    /* animation-timeline: view();
+    animation-range: entry 0lvh entry 190lvh; */
+    ol li {
+      background-color: var(--main-color);
+    }
 }
 
 /* ul:has(li.clicked) li {
