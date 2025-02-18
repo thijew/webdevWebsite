@@ -1,0 +1,398 @@
+/* CUSTOM PROPERTIES */
+:root {
+  --main-color: #000000;
+  --secondary-color:#aa140c;
+  --background-color: #FFFAF3;
+  --white: #ffffff;
+  --li-width: 10em;
+  --li-height: 80%;
+  --li-widthSmall: 80vw;
+  --li-heightSmall: 10em;
+}
+
+
+
+@keyframes boxes {
+  from {
+    transform: translateY(var(--start)) rotate(var(--rotate));
+  }
+
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events */
+@keyframes enable-hover {
+  from {
+    pointer-events: none;
+  }
+
+  to {
+    pointer-events: auto;
+  }
+}
+
+@keyframes sectionAnimation {
+  to {
+    font-size: 1.8em;
+    transform: translateY(0);
+  }
+}
+
+@keyframes letterAnimation {
+  to {
+    transform: translateX(var(--tX)) translateY(var(--tY)) rotate(var(--r));
+  }
+}
+
+@keyframes pAnimation {
+  to {
+    transform: translateY(19em);
+    font-size: .9em;
+  }
+}
+
+@keyframes showContent {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: .6;
+  }
+
+  to {
+    opacity:var(--state);
+    transform: rotateX(0deg);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ADD FONTS */
+body {
+  position: relative;
+  height: 200vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+}
+
+/* }credits naar cyd! */
+li:nth-of-type(3) {
+  view-timeline-name: --text-scramble;
+}
+
+section {
+  position: relative;
+  color: var(--secondary-color);
+  font-size: 2em;
+  z-index: 3;
+  pointer-events: none;
+  font-size: 2em;
+  width: max-content;
+  animation: sectionAnimation 1s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range: entry 100lvh entry 190lvh;
+  transform: translateY(80vh) translateX(-3vw) rotate(-6deg);
+}
+
+h1 span {
+  display: inline-block;
+  animation-name: letterAnimation;
+  animation-timeline: --text-scramble;
+  animation-range: entry var(--start-range) entry var(--end-range);
+}
+
+section p {
+  animation: pAnimation 1s ease-in-out forwards;
+  animation-timeline: view();
+  animation-range: entry 100lvh entry 190lvh;
+}
+
+h1 span:nth-of-type(1) {
+  --tX: .5em;
+  --tY: 0em;
+  --r: 2deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(2) {
+  --tX: 1em;
+  --tY: 1.2em;
+  --r: -3deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(3) {
+  --tX: 1em;
+  --tY: 2.4em;
+  --r: 1deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(4) {
+  --tX: .7em;
+  --tY: 3.6em;
+  --r: -2deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(5) {
+  --tX: -1em;
+  --tY: 4.8em;
+  --r: 2deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(6) {
+  --tX: -1em;
+  --tY: 6em;
+  --r: -1deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(7) {
+  --tX: -3.5em;
+  --tY: 7.2em;
+  --r: 3deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(8) {
+  --tX: -3em;
+  --tY: 8.4em;
+  --r: -2deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(9) {
+  --tX: -4em;
+  --tY: 9.6em;
+  --r: 1deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+h1 span:nth-of-type(10) {
+  --tX: -4em;
+  --tY: 10.8em;
+  --r: -3deg;
+  --start-range: 100lvh;
+  --end-range: 200lvh;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 0;
+  position: sticky;
+  top: 0;
+}
+
+li {
+  position: sticky;
+  background-color: black;
+  width: var(--li-width);
+  height: var(--li-height);
+  animation: boxes 1s ease-out forwards, enable-hover linear forwards;
+  animation-timeline: scroll();
+  transform: translateY(var(--start)) rotate(var(--rotate));
+  opacity: 1;
+  pointer-events: none;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+li:nth-of-type(1) *,
+li:nth-of-type(2) *,
+li:nth-of-type(5) * {
+  animation: showContent 1s linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0lvh entry 190lvh;
+}
+
+li:nth-of-type(1) {
+  --start: 10vh;
+  --rotate: 7deg;
+  animation-range: 0vh 90vh, 100vh;
+}
+
+li:nth-of-type(2) {
+  --start: 5vh;
+  --rotate: -5deg;
+  animation-range: 0vh 90vh;
+}
+
+li:nth-of-type(3) {
+  --start: 3vh;
+  --rotate: 6deg;
+  animation-range: 20vh 90vh, 100vh;
+
+}
+
+li:nth-of-type(4) {
+  --start: 25vh;
+  --rotate: 0deg;
+  animation-range: 30vh 90vh, 100vh;
+}
+
+li:nth-of-type(5) {
+  --start: 15vh;
+  --rotate: -7deg;
+  animation-range: 40vh 90vh, 100vh;
+}
+
+/* Hier veranderen de states van de boxes */
+li:hover {
+  top: 20lvh;
+  margin: 1;
+  padding: 1;
+}
+
+li::before {
+  content: "";
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+/* https://cssgradient.io/ */
+li:hover::before {
+  opacity: .4;
+  background: linear-gradient(328deg, var(--secondary-color) 0%, var(--white) 100%);
+}
+
+li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+li:nth-of-type(2) {
+  max-width: fit-content;
+  list-style: none;
+  color: var(--white);
+}
+
+li:nth-of-type(2) ol {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* https://www.w3schools.com/cssref/css3_pr_flex-grow.php */
+/* Style for the clicked state of the list items */
+li.clicked {
+  background-color: var(--main-color);
+  width: 40vw;
+  top: 20lvh;
+  transition: all 0.3s ease-in-out;
+  list-style-type: none;
+}
+
+li.clicked img {
+  --state: 0.3;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+/* Style for the clicked state of the article list items */
+li.clicked article {
+  margin: 1rem;
+  padding: 1rem 0 1rem;
+  width: fit-content;
+}
+li.clicked article h1  {
+  font-size: 3rem;
+  margin: 1rem;
+}
+
+li.clicked article ol li  {
+width:  100%;
+}
+
+
+/*  
+li.clicked :nth-last-of-type(5) article {
+  
+} */
+
+/* ul:has(li.clicked) li {
+
+} */
+
+/* https://www.w3schools.com/cSS/css_rwd_mediaqueries.asp */
+/* https://testsigma.com/blog/common-screen-resolutions/ */
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1200px) {
+  body {
+    height: 100lvh;
+    width: 100vw;
+    background-color: var(--background-color);
+    animation-duration: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+  }
+
+  li {
+    position: relative;
+    background-color: black;
+    opacity: 1;
+    pointer-events: none;
+    width: 80vw;
+    height: 10em;
+    animation: none;
+    transform: rotateX(0);
+  }
+
+
+  li img {
+    max-width: 100;
+    max-height: 100%;
+    object-fit: cover;
+    position: inline-block;
+  }
+
+  section {
+    position: relative;
+    color: var(--secondary-color);
+    font-size: 2em;
+    pointer-events: none;
+    transform: rotateX(0) translateY(0);
+  }
+}
+

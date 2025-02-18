@@ -22,6 +22,8 @@ listItems.forEach((li) => {
         }
     });
 });
+
+// Dit moet met css kunnen maar kom er maar niet uit
 // Remove the "clicked" class when the scroll position is below 100vh
 window.addEventListener("scroll", function () {
     const scrollY = window.scrollY;

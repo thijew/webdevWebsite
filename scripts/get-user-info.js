@@ -47,11 +47,13 @@ function getMyName() {
         let myName = myData.name;
 
         if (!myName) {
-            showName = "Name not found";
+            myName = "Name not found";
         }
-        const showName = document.querySelector('li:nth-of-type(4) h1');
+        const showName = document.querySelector('li:nth-of-type(2) h1');
 
-        console.log(myName);
+        showName.textContent = myName;
+
+        console.log(showName);
     });
 }
 

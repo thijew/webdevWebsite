@@ -23,7 +23,7 @@ getMusicData(urlNirvana).then(data => {
 
     fifthList.innerHTML = `
     <img src="${musicLogo}" alt="${musicName}">
-    <article>
+    <article class="clicked>
     <h2>${musicName}</h2>
     <p>Genre: ${musicGenre}</p>
     <p>Label: ${musicLabel}</p>
