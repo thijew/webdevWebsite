@@ -12,7 +12,7 @@
 
 
 
-@keyframes boxes {
+@keyframes --boxes {
   from {
     transform: translateY(var(--start)) rotate(var(--rotate));
   }
@@ -110,21 +110,24 @@ h1 span {
   display: inline-block;
   animation-name: letterAnimation;
   animation-timeline: --text-scramble;
+  /* animation-timeline:view(); */
   animation-range: entry var(--start-range) entry var(--end-range);
+
+  &:nth-of-type(1) {
+    --tX: .5em;
+    --tY: 0em;
+    --r: 2deg;
+    --start-range: 100lvh;
+    --end-range: 200lvh;
+  }
+    
 }
 
 section p {
-  animation: pAnimation 1s ease-in-out forwards;
-  animation-timeline: view();
-  animation-range: entry 100lvh entry 190lvh;
-}
-
-h1 span:nth-of-type(1) {
-  --tX: .5em;
-  --tY: 0em;
-  --r: 2deg;
-  --start-range: 100lvh;
-  --end-range: 200lvh;
+  /* color: #000000; */
+    animation: pAnimation 1s ease-in-out forwards;
+    animation-timeline: view();
+    animation-range: entry 100lvh entry 190lvh;
 }
 
 h1 span:nth-of-type(2) {
@@ -210,12 +213,13 @@ ul {
   top: 0;
 }
 
+/* Boxes */
 li {
   position: sticky;
   background-color: black;
   width: var(--li-width);
   height: var(--li-height);
-  animation: boxes 1s ease-out forwards, enable-hover linear forwards;
+  animation: --boxes 1s ease-out forwards, enable-hover linear forwards;
   animation-timeline: scroll();
   transform: translateY(var(--start)) rotate(var(--rotate));
   opacity: 1;
@@ -295,15 +299,23 @@ li img {
 }
 
 li:nth-of-type(2) {
-  max-width: fit-content;
-  list-style: none;
   color: var(--white);
+  text-align: left;
 }
 
 li:nth-of-type(2) ol {
   display: flex;
-  flex-direction: column;
-  gap: 2em;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden; /* Ensures no overflow issues */
+}
+
+li:nth-of-type(2) img {
+  width: 100%; /* Ensures width adjusts naturally */
+  height: 100%; /* Covers the height */
+  object-fit: cover; /* Ensures the height fills while cropping width */
+  object-position: left center; /* Aligns the image to the left */
+
 }
 
 /* https://www.w3schools.com/cssref/css3_pr_flex-grow.php */
@@ -311,12 +323,14 @@ li:nth-of-type(2) ol {
 li.clicked {
   background-color: var(--main-color);
   width: 40vw;
-  top: 20lvh;
+  top: 20lvh; 
   transition: all 0.3s ease-in-out;
   list-style-type: none;
+  /* transform: rotateY(40%), rotateX(20%); */
 }
 
 li.clicked img {
+  width: 100%;
   --state: 0.3;
   transition: opacity 0.3s ease-in-out;
 }
@@ -328,6 +342,7 @@ li.clicked article {
   padding: 1rem 0 1rem;
   width: fit-content;
 }
+
 li.clicked article h1  {
   font-size: 3rem;
   margin: 1rem;
@@ -358,6 +373,7 @@ li.clicked :nth-last-of-type(5) article {
     width: 100vw;
     background-color: var(--background-color);
     animation-duration: 0;
+    animation: none;
   }
 
   ul {
@@ -374,7 +390,7 @@ li.clicked :nth-last-of-type(5) article {
     opacity: 1;
     pointer-events: none;
     width: 80vw;
-    height: 10em;
+    max-height: 10em;
     animation: none;
     transform: rotateX(0);
   }

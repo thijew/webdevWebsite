@@ -11,22 +11,25 @@ const fifthList = document.querySelector('li:nth-of-type(5)');
 getMusicData(urlNirvana).then(data => {
     console.log(data);
     const musicData = data.artists[0];
-    const musicName = musicData.strArtist;
-    const musicGenre = musicData.strGenre;
-    const musicLabel = musicData.strLabel;
+    // const musicName = musicData.strArtist;
+    // const musicGenre = musicData.strGenre;
+    // const musicLabel = musicData.strLabel;
     const musicFormed = musicData.intFormedYear;
     const musicCountry = musicData.strCountry;
     const musicWebsite = musicData.strWebsite;
     const musicLogo = musicData.strArtistThumb;
     const musicLogoWide = musicData.strArtistWideThumb;
 
+    // Makkelijkere manier van vars aanmaken en data meegeven aan html
+    let { strArtist, strGenre, strLabel } = musicData;
+
 
     fifthList.innerHTML = `
-    <img src="${musicLogo}" alt="${musicName}">
+    <img src="${musicLogo}" alt="${strArtist}">
     <article class="clicked>
-    <h2>${musicName}</h2>
-    <p>Genre: ${musicGenre}</p>
-    <p>Label: ${musicLabel}</p>
+    <h2>${strArtist}</h2>
+    <p>Genre: ${strGenre}</p>
+    <p>Label: ${strLabel}</p>
     <p>Formed: ${musicFormed}</p>
     <p>Country: ${musicCountry}</p>
     <a href="${musicWebsite}">Website</a>
